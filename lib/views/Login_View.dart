@@ -33,6 +33,7 @@ class LoginView extends StatelessWidget {
                     fontFamily: 'Skranji',
                   ),
                 ),
+                
                 const SizedBox(height: 70),
                 const Text(
                   'Join',

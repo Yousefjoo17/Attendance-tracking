@@ -1,5 +1,6 @@
 import 'package:attendence_tracking/views/Home_View.dart';
 import 'package:attendence_tracking/views/widgets/Custom_Button.dart';
+import 'package:attendence_tracking/views/widgets/Custom_Font.dart';
 import 'package:attendence_tracking/views/widgets/Custom_text_field.dart';
 import 'package:attendence_tracking/views/widgets/app_logo.dart';
 import 'package:flutter/material.dart';
@@ -26,13 +27,7 @@ class LoginView extends StatelessWidget {
                 const SizedBox(height: 80),
                 const AppLogo(),
                 const SizedBox(height: 20),
-                const Text(
-                  'Attendance tracker',
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontFamily: 'Skranji',
-                  ),
-                ),
+                const Customfont(text: 'Attendance tracker', size: 30),
                 const SizedBox(height: 70),
                 const SizedBox(height: 10),
                 CustomTextField(

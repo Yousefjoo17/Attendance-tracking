@@ -16,11 +16,8 @@ class AttendenceTrackingApp extends StatelessWidget {
       title: 'Attendence Tracking',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: kprimaryColor),
-        useMaterial3: true,
       ),
       home: const LoginView(),
     );
   }
 }
-
-

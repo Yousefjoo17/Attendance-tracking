@@ -22,6 +22,7 @@ class CustomTextField extends StatelessWidget {
         if (data!.isEmpty) {
           return 'requeird';
         }
+        return null;
       },
       onChanged: onchanged,
       obscureText: obsecuretext,

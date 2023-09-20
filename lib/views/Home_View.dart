@@ -1,4 +1,5 @@
-import 'package:attendence_tracking/constants.dart';
+import 'package:attendence_tracking/views/widgets/Attendence_List_view.dart';
+import 'package:attendence_tracking/views/widgets/Custom_Divider.dart';
 import 'package:attendence_tracking/views/widgets/Custom_Font.dart';
 import 'package:attendence_tracking/views/widgets/Custom_elevatedButton.dart';
 import 'package:attendence_tracking/views/widgets/Home_app_bar.dart';
@@ -21,15 +22,7 @@ class HomeView extends StatelessWidget {
               size: 100,
             ),
             const Customfont(text: 'name', size: 35),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 24),
-              child: Divider(
-                indent: 30,
-                endIndent: 30,
-                color: kprimaryColor,
-                thickness: 0.7,
-              ),
-            ),
+            const CustomDivider(),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -45,20 +38,12 @@ class HomeView extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 20),
-            Expanded(
-              child: ListView.builder(
-                itemCount: 10,
-                itemBuilder: (context, index) {
-                  return const Icon(
-                    Icons.abc,
-                    size: 100,
-                  );
-                },
-              ),
-            ),
+            const AttendenceListView(),
           ],
         ),
       ),
     );
   }
 }
+
+

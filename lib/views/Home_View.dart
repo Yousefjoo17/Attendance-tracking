@@ -38,12 +38,14 @@ class HomeView extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 20),
-            const AttendenceListView(),
+            const Expanded(
+                child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24),
+              child: AttendenceListView(),
+            )),
           ],
         ),
       ),
     );
   }
 }
-
-

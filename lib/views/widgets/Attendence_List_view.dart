@@ -1,3 +1,4 @@
+import 'package:attendence_tracking/views/widgets/attendence_tile.dart';
 import 'package:flutter/material.dart';
 
 class AttendenceListView extends StatelessWidget {
@@ -7,17 +8,12 @@ class AttendenceListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        itemCount: 10,
-        itemBuilder: (context, index) {
-          return const Icon(
-            Icons.abc,
-            size: 100,
-          );
-        },
-      ),
+    return ListView.builder(
+      padding: const EdgeInsets.all(0),
+      itemCount: 20,
+      itemBuilder: (context, index) {
+        return const AttendenceTile();
+      },
     );
   }
 }
-

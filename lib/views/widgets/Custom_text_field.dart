@@ -6,10 +6,14 @@ import 'package:flutter/material.dart';
 class CustomTextField extends StatelessWidget {
   // ignore: use_key_in_widget_constructors
   CustomTextField(
-      {required this.hinttext, this.onchanged, required this.obsecuretext});
+      {required this.hinttext,
+      this.onchanged,
+      required this.obsecuretext,
+      this.icon});
   final String? hinttext;
   Function(String)? onchanged;
   final bool obsecuretext;
+  final Icon? icon;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -22,12 +26,19 @@ class CustomTextField extends StatelessWidget {
       onChanged: onchanged,
       obscureText: obsecuretext,
       decoration: InputDecoration(
+        prefixIcon: icon,
+        labelText: hinttext,
+        labelStyle: const TextStyle(color: Colors.grey),
         hintText: hinttext,
         hintStyle: const TextStyle(color: Colors.grey),
-        enabledBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: kprimaryColor)),
-        border: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black)),
+        enabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color: kprimaryColor),
+          borderRadius: BorderRadius.circular(16),
+        ),
+        border: OutlineInputBorder(
+          borderSide: const BorderSide(color: Colors.black),
+          borderRadius: BorderRadius.circular(16),
+        ),
       ),
     );
   }

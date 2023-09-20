@@ -1,3 +1,5 @@
+import 'package:attendence_tracking/Models/User_model.dart';
+import 'package:attendence_tracking/helpers/Show_snack_bar.dart';
 import 'package:attendence_tracking/views/widgets/Attendence_List_view.dart';
 import 'package:attendence_tracking/views/widgets/Custom_Divider.dart';
 import 'package:attendence_tracking/views/widgets/Custom_Font.dart';
@@ -6,8 +8,8 @@ import 'package:attendence_tracking/views/widgets/Home_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key});
-
+  const HomeView({super.key, required this.user});
+  final UserModel user;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,19 +23,23 @@ class HomeView extends StatelessWidget {
               Icons.person_2_sharp,
               size: 100,
             ),
-            const Customfont(text: 'name', size: 35),
+            Customfont(text: user.username!, size: 35),
             const CustomDivider(),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CustomElevatedButton(
                   text: 'Check in',
-                  onPressed: () {},
+                  onPressed: () {
+                    showmySnackBar(context, 'you have succeffuly checked in');
+                  },
                 ),
                 const SizedBox(width: 20),
                 CustomElevatedButton(
                   text: 'Check out',
-                  onPressed: () {},
+                  onPressed: () {
+                    showmySnackBar(context, 'you have succeffuly checked out');
+                  },
                 ),
               ],
             ),

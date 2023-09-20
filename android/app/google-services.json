@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "163933915965",
+    "project_id": "attendance-tracking-f54d9",
+    "storage_bucket": "attendance-tracking-f54d9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:163933915965:android:faf4b13e9e2775cbe85354",
+        "android_client_info": {
+          "package_name": "com.example.attendence_tracking"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJFLf-ls-p48p-_kYopVQd_0q22dbSjmE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

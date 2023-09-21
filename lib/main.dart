@@ -1,4 +1,5 @@
 import 'package:attendence_tracking/Cubits/AttendencList_Cubit/home_cubit.dart';
+import 'package:attendence_tracking/Cubits/Check_cubit/check_cubit.dart';
 import 'package:attendence_tracking/Cubits/Login_Cubit/login_cubit.dart';
 import 'package:attendence_tracking/Simple_Bloc_Observer.dart';
 import 'package:attendence_tracking/constants.dart';
@@ -25,6 +26,7 @@ class AttendenceTrackingApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => LoginCubit()),
         BlocProvider(create: (context) => AttendanceListCubit()),
+        BlocProvider(create: (context) => CheckCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

@@ -28,23 +28,26 @@ class LoginCubit extends Cubit<LoginState> {
       print('Error :$e');
       emit(LoginFailure());
     }
+
     for (var name in namesList) {
       if (name == user.name) {
         newUser = false;
         break;
       }
     }
+
     if (newUser) {
-      print('new user');
-      users.add({
-        kName: user.name,
-        kCheckList: [],
-      }).then((value) {
+      try {
+        String docId = users.doc().id;
+        await users.doc(docId).set({
+          kName: user.name,
+          kCheckList: [],
+          'id': docId,
+        });
         emit(LoginSuccess());
-      }).catchError((error) {
-        print("Failed to add user: $error");
+      } catch (e) {
         emit(LoginFailure());
-      });
+      }
     } else {
       emit(LoginSuccess());
     }

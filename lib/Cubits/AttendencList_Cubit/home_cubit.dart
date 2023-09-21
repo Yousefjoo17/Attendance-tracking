@@ -16,7 +16,7 @@ class AttendanceListCubit extends Cubit<AddtendanceListState> {
       QuerySnapshot querySnapshot = await users.get();
 
       for (var user in querySnapshot.docs) {
-        list.add(user['User name']);
+        list.add(user[kName]);
       }
       print(list);
     } on Exception catch (e) {

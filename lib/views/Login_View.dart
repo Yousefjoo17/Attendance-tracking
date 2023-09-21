@@ -1,3 +1,4 @@
+import 'package:attendence_tracking/Cubits/Check_cubit/check_cubit.dart';
 import 'package:attendence_tracking/Cubits/Login_Cubit/login_cubit.dart';
 import 'package:attendence_tracking/Models/User_model.dart';
 import 'package:attendence_tracking/views/Home_View.dart';
@@ -18,7 +19,7 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   GlobalKey<FormState> formkey = GlobalKey();
-  UserModel user = UserModel();
+  UserModel userModel = UserModel();
   bool isLoading = false;
   @override
   Widget build(BuildContext context) {
@@ -29,8 +30,10 @@ class _LoginViewState extends State<LoginView> {
             isLoading = true;
           } else if (state is LoginSuccess) {
             isLoading = false;
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => HomeView(user: user)));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => HomeView(userModel: userModel)));
           } else {
             isLoading = false;
           }
@@ -64,7 +67,7 @@ class _LoginViewState extends State<LoginView> {
                           hinttext: 'Username',
                           obsecuretext: false,
                           onchanged: (value) {
-                            user.name = value;
+                            userModel.name = value;
                           },
                           icon: const Icon(Icons.person),
                         ),
@@ -73,17 +76,19 @@ class _LoginViewState extends State<LoginView> {
                           hinttext: 'Password',
                           obsecuretext: true,
                           onchanged: (value) {
-                            user.password = value;
+                            userModel.password = value;
                           },
                           icon: const Icon(Icons.key),
                         ),
                         const SizedBox(height: 30),
                         CustomButton(
                             text: 'Login',
-                            ontap: () {
+                            ontap: () async {
                               if (formkey.currentState!.validate()) {
-                                BlocProvider.of<LoginCubit>(context)
-                                    .loginuser(user);
+                               await BlocProvider.of<LoginCubit>(context)
+                                    .loginuser(userModel);
+                               await BlocProvider.of<CheckCubit>(context)
+                                    .getuser(userModel);
                               }
                             }),
                         const SizedBox(height: 140),

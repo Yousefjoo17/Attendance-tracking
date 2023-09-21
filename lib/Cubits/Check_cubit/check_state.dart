@@ -14,4 +14,9 @@ final class CheckFailure extends CheckState {
   CheckFailure(this.errMessage);
 }
 
-final class CheckSuccessCheck extends CheckState {}
+final class CheckSuccessPress extends CheckState {}
+
+final class CheckFailurePress extends CheckState {
+  final String errMessage;
+  CheckFailurePress(this.errMessage);
+}

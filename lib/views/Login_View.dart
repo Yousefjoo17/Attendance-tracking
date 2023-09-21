@@ -18,7 +18,7 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   GlobalKey<FormState> formkey = GlobalKey();
-  UserModel userModel = UserModel();
+  UserModel userModel = UserModel(shouldCheckIn: true);
   bool isLoading = false;
   @override
   Widget build(BuildContext context) {

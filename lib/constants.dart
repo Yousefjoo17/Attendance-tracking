@@ -5,3 +5,4 @@ const String kCollectionUsers = 'users';
 const String kName = 'name';
 const String kCheckList = 'Checklist';
 const String kDocID = 'id';
+const String kShouldCheckIn = 'shouldCheckIn';

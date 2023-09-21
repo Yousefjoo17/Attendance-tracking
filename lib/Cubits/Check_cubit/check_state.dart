@@ -17,12 +17,12 @@ final class CheckinFailurePress extends CheckState {
   CheckinFailurePress(this.errMessage);
 }
 
-final class CheckoutSuccessPress extends CheckState {
-  final String message;
-  CheckoutSuccessPress(this.message);
-}
+final class CheckoutSuccessPress extends CheckState {}
 
-final class CheckOutPressagian extends CheckState {}
+final class CheckOutPressagian extends CheckState {
+  final String message;
+  CheckOutPressagian(this.message);
+}
 
 final class CheckoutFailurePress extends CheckState {
   final String errMessage;

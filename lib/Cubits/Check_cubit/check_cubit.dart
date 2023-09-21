@@ -8,10 +8,13 @@ part 'check_state.dart';
 
 class CheckCubit extends Cubit<CheckState> {
   CheckCubit() : super(CheckInitial());
-  CollectionReference users =
-      FirebaseFirestore.instance.collection(kCollectionUsers);
 
   Future<void> checkIn(UserModel userModel) async {
+    if (!userModel.shouldCheckIn!) {
+      emit(CheckInPressagian('You have already checked in before'));
+      return;
+    }
+
     try {
       userModel.checkList!.add(DateTime.now());
       await FirebaseFirestore.instance
@@ -19,7 +22,9 @@ class CheckCubit extends Cubit<CheckState> {
           .doc(userModel.docID)
           .update({
         kCheckList: userModel.checkList,
+        kShouldCheckIn: false,
       });
+      userModel.shouldCheckIn = false;
       emit(CheckInSuccessPress());
     } catch (e) {
       print(e);
@@ -28,6 +33,10 @@ class CheckCubit extends Cubit<CheckState> {
   }
 
   Future<void> checkOut(UserModel userModel) async {
+    if (userModel.shouldCheckIn!) {
+      emit(CheckOutPressagian('You have already checked out before'));
+      return;
+    }
     try {
       userModel.checkList!.add(DateTime.now());
       await FirebaseFirestore.instance
@@ -35,8 +44,10 @@ class CheckCubit extends Cubit<CheckState> {
           .doc(userModel.docID)
           .update({
         kCheckList: userModel.checkList,
+        kShouldCheckIn: true,
       });
-      emit(CheckInSuccessPress());
+      userModel.shouldCheckIn = true;
+      emit(CheckoutSuccessPress());
     } catch (e) {
       emit(CheckinFailurePress(e.toString()));
     }

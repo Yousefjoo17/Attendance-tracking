@@ -1,7 +1,14 @@
 class UserModel {
   String? name;
   String? password;
-  List<dynamic>? checkList = [];
+  List<dynamic>? checkList;
   String? docID;
-  UserModel({this.name, this.password, this.checkList, this.docID});
+  bool? shouldCheckIn;
+  UserModel({
+    this.name,
+    this.password,
+    this.checkList,
+    this.docID,
+    this.shouldCheckIn,
+  });
 }

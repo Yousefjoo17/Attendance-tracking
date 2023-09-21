@@ -21,6 +21,10 @@ class HomeView extends StatelessWidget {
           showmySnackBar(context, 'You have checked in successfully');
         } else if (state is CheckoutSuccessPress) {
           showmySnackBar(context, 'You have checked out successfully');
+        } else if (state is CheckInPressagian) {
+          showmySnackBar(context, state.message);
+        } else if (state is CheckOutPressagian) {
+          showmySnackBar(context, state.message);
         }
       },
       builder: (context, state) {

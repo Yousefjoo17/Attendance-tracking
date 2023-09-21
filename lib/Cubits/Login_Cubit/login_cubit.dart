@@ -24,6 +24,7 @@ class LoginCubit extends Cubit<LoginState> {
           newUser = false;
           userModel.docID = user[kDocID];
           userModel.checkList = user[kCheckList];
+          userModel.shouldCheckIn = user[kShouldCheckIn];
           break;
         }
       }
@@ -39,8 +40,11 @@ class LoginCubit extends Cubit<LoginState> {
           kName: userModel.name,
           kCheckList: [],
           kDocID: docId,
+          kShouldCheckIn: true,
         });
         userModel.docID = docId;
+        userModel.checkList = [];
+        userModel.shouldCheckIn = true;
         emit(LoginSuccess());
       } catch (e) {
         emit(LoginFailure());

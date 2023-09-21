@@ -1,4 +1,5 @@
-import 'package:attendence_tracking/Cubits/cubit/login_cubit.dart';
+import 'package:attendence_tracking/Cubits/AttendencList_Cubit/home_cubit.dart';
+import 'package:attendence_tracking/Cubits/Login_Cubit/login_cubit.dart';
 import 'package:attendence_tracking/Simple_Bloc_Observer.dart';
 import 'package:attendence_tracking/constants.dart';
 import 'package:attendence_tracking/firebase_options.dart';
@@ -22,9 +23,8 @@ class AttendenceTrackingApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) => LoginCubit(),
-        ),
+        BlocProvider(create: (context) => LoginCubit()),
+        BlocProvider(create: (context) => AttendanceListCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

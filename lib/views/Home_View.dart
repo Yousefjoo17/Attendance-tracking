@@ -1,3 +1,4 @@
+import 'package:attendence_tracking/Cubits/AttendencList_Cubit/home_cubit.dart';
 import 'package:attendence_tracking/Models/User_model.dart';
 import 'package:attendence_tracking/helpers/Show_snack_bar.dart';
 import 'package:attendence_tracking/views/widgets/Attendence_List_view.dart';
@@ -6,12 +7,14 @@ import 'package:attendence_tracking/views/widgets/Custom_Font.dart';
 import 'package:attendence_tracking/views/widgets/Custom_elevatedButton.dart';
 import 'package:attendence_tracking/views/widgets/Home_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key, required this.user});
   final UserModel user;
   @override
   Widget build(BuildContext context) {
+    BlocProvider.of<AttendanceListCubit>(context).getList(user: user);
     return Scaffold(
       body: Center(
         child: Column(

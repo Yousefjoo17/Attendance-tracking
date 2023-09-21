@@ -9,7 +9,7 @@ part 'login_state.dart';
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitial());
 
-  CollectionReference users =
+  CollectionReference usersReference =
       FirebaseFirestore.instance.collection(kCollectionUsers);
   bool newUser = true;
 
@@ -17,12 +17,13 @@ class LoginCubit extends Cubit<LoginState> {
     emit(LoginLoading());
 
     try {
-      QuerySnapshot querySnapshot = await users.get();
+      QuerySnapshot querySnapshot = await usersReference.get();
 
       for (var user in querySnapshot.docs) {
         if (user[kName] == userModel.name) {
           newUser = false;
           userModel.docID = user[kDocID];
+          userModel.checkList = user[kCheckList];
           break;
         }
       }
@@ -33,8 +34,8 @@ class LoginCubit extends Cubit<LoginState> {
 
     if (newUser) {
       try {
-        String docId = users.doc().id;
-        await users.doc(docId).set({
+        String docId = usersReference.doc().id;
+        await usersReference.doc(docId).set({
           kName: userModel.name,
           kCheckList: [],
           kDocID: docId,

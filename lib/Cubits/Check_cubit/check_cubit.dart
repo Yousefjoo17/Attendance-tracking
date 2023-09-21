@@ -12,18 +12,34 @@ class CheckCubit extends Cubit<CheckState> {
       FirebaseFirestore.instance.collection(kCollectionUsers);
 
   Future<void> checkIn(UserModel userModel) async {
-    print(userModel.docID);
     try {
+      userModel.checkList!.add(DateTime.now());
       await FirebaseFirestore.instance
           .collection(kCollectionUsers)
           .doc(userModel.docID)
           .update({
-        kCheckList: [1, 2, 3],
+        kCheckList: userModel.checkList,
       });
+      emit(CheckInSuccessPress());
+    } catch (e) {
+      print(e);
+      emit(CheckinFailurePress(e.toString()));
+    }
+  }
+
+  Future<void> checkOut(UserModel userModel) async {
+    try {
+      userModel.checkList!.add(DateTime.now());
+      await FirebaseFirestore.instance
+          .collection(kCollectionUsers)
+          .doc(userModel.docID)
+          .update({
+        kCheckList: userModel.checkList,
+      });
+      emit(CheckInSuccessPress());
     } catch (e) {
       emit(CheckinFailurePress(e.toString()));
     }
-    emit(CheckinSuccessPress());
   }
 }
 

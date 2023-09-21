@@ -1,7 +1,7 @@
 class UserModel {
   String? name;
   String? password;
-  List<DateTime>? checkList;
+  List<dynamic>? checkList = [];
   String? docID;
-  UserModel({this.name, this.password, this.checkList , this.docID});
+  UserModel({this.name, this.password, this.checkList, this.docID});
 }

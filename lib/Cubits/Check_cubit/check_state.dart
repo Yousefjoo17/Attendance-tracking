@@ -5,14 +5,24 @@ sealed class CheckState {}
 
 final class CheckInitial extends CheckState {}
 
-final class CheckinSuccessPress extends CheckState {}
+final class CheckInSuccessPress extends CheckState {}
+
+final class CheckInPressagian extends CheckState {
+  final String message;
+  CheckInPressagian(this.message);
+}
 
 final class CheckinFailurePress extends CheckState {
   final String errMessage;
   CheckinFailurePress(this.errMessage);
 }
 
-final class CheckoutSuccessPress extends CheckState {}
+final class CheckoutSuccessPress extends CheckState {
+  final String message;
+  CheckoutSuccessPress(this.message);
+}
+
+final class CheckOutPressagian extends CheckState {}
 
 final class CheckoutFailurePress extends CheckState {
   final String errMessage;

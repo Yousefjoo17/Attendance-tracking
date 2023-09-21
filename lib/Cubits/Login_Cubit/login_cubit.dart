@@ -21,7 +21,7 @@ class LoginCubit extends Cubit<LoginState> {
       namesList.clear();
 
       for (var user in querySnapshot.docs) {
-        namesList.add(user['User name']);
+        namesList.add(user[kName]);
       }
       print(namesList);
     } on Exception catch (e) {
@@ -38,9 +38,8 @@ class LoginCubit extends Cubit<LoginState> {
       print('new user');
       users.add({
         kName: user.name,
-        //kCheckList: [DateTime.now(), DateTime.now(), DateTime.now()],
+        kCheckList: [],
       }).then((value) {
-        print("User Added : $value");
         emit(LoginSuccess());
       }).catchError((error) {
         print("Failed to add user: $error");
@@ -48,7 +47,6 @@ class LoginCubit extends Cubit<LoginState> {
       });
     } else {
       emit(LoginSuccess());
-      print('old user');
     }
   }
 }

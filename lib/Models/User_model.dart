@@ -1,5 +1,6 @@
 class UserModel {
   String? name;
   String? password;
-  UserModel({this.name, this.password});
+  List<DateTime>? checkList;
+  UserModel({this.name, this.password,this.checkList});
 }

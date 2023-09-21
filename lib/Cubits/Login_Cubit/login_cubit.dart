@@ -37,7 +37,8 @@ class LoginCubit extends Cubit<LoginState> {
     if (newUser) {
       print('new user');
       users.add({
-        'User name': user.name,
+        kName: user.name,
+        //kCheckList: [DateTime.now(), DateTime.now(), DateTime.now()],
       }).then((value) {
         print("User Added : $value");
         emit(LoginSuccess());

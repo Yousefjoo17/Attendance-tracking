@@ -10,25 +10,23 @@ class CheckCubit extends Cubit<CheckState> {
   CheckCubit() : super(CheckInitial());
   CollectionReference users =
       FirebaseFirestore.instance.collection(kCollectionUsers);
-  
 
-  void checkIn(UserModel user) {}
-
+  Future<void> checkIn(UserModel userModel) async {
+    print(userModel.docID);
+    try {
+      await FirebaseFirestore.instance
+          .collection(kCollectionUsers)
+          .doc(userModel.docID)
+          .update({
+        kCheckList: [1, 2, 3],
+      });
+    } catch (e) {
+      emit(CheckinFailurePress(e.toString()));
+    }
+    emit(CheckinSuccessPress());
+  }
 }
 
 /*
-Future<void> getuser(UserModel userModel) async {
-    try {
-      QuerySnapshot querySnapshot = await users.get();
 
-      for (var user in querySnapshot.docs) {
-        if (userModel.name == user[kName]) {
-          userModel.docID = user[kDocID];
-          break;
-        }
-      }
-    } on Exception catch (e) {
-      print('Error :$e');
-    }
-  }
  */

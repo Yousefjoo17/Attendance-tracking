@@ -15,11 +15,13 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('0000000000000');
+    print('0000000000000000');
     print(userModel.docID);
     return BlocConsumer<CheckCubit, CheckState>(
       listener: (context, state) {
-      
+        if (state is CheckinSuccessPress) {
+          showmySnackBar(context, 'You have checked in successfully');
+        }
       },
       builder: (context, state) {
         return Scaffold(
@@ -40,18 +42,15 @@ class HomeView extends StatelessWidget {
                   children: [
                     CustomElevatedButton(
                       text: 'Check in',
-                      onPressed: () {
-                        showmySnackBar(
-                            context, 'you have succeffuly checked in');
+                      onPressed: () async {
+                        await BlocProvider.of<CheckCubit>(context)
+                            .checkIn(userModel);
                       },
                     ),
                     const SizedBox(width: 20),
                     CustomElevatedButton(
                       text: 'Check out',
-                      onPressed: () {
-                        showmySnackBar(
-                            context, 'you have succeffuly checked out');
-                      },
+                      onPressed: () {},
                     ),
                   ],
                 ),

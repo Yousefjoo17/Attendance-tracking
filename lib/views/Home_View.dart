@@ -14,7 +14,7 @@ class HomeView extends StatelessWidget {
   final UserModel user;
   @override
   Widget build(BuildContext context) {
-    BlocProvider.of<AttendanceListCubit>(context).getList(user: user);
+   // BlocProvider.of<AttendanceListCubit>(context).getList(user: user);
     return Scaffold(
       body: Center(
         child: Column(
@@ -26,7 +26,7 @@ class HomeView extends StatelessWidget {
               Icons.person_2_sharp,
               size: 100,
             ),
-            Customfont(text: user.username!, size: 35),
+            Customfont(text: user.name!, size: 35),
             const CustomDivider(),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

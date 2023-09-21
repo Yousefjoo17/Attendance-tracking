@@ -1,5 +1,5 @@
 class UserModel {
-  String? username;
+  String? name;
   String? password;
-  UserModel({this.username, this.password});
+  UserModel({this.name, this.password});
 }

@@ -10,7 +10,14 @@ class CheckCubit extends Cubit<CheckState> {
   CheckCubit() : super(CheckInitial());
   CollectionReference users =
       FirebaseFirestore.instance.collection(kCollectionUsers);
-  Future<void> getuser(UserModel userModel) async {
+  
+
+  void checkIn(UserModel user) {}
+
+}
+
+/*
+Future<void> getuser(UserModel userModel) async {
     try {
       QuerySnapshot querySnapshot = await users.get();
 
@@ -24,6 +31,4 @@ class CheckCubit extends Cubit<CheckState> {
       print('Error :$e');
     }
   }
-}
-
-void checkIn(UserModel user) {}
+ */

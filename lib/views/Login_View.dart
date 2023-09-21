@@ -1,4 +1,3 @@
-import 'package:attendence_tracking/Cubits/Check_cubit/check_cubit.dart';
 import 'package:attendence_tracking/Cubits/Login_Cubit/login_cubit.dart';
 import 'package:attendence_tracking/Models/User_model.dart';
 import 'package:attendence_tracking/views/Home_View.dart';
@@ -85,10 +84,8 @@ class _LoginViewState extends State<LoginView> {
                             text: 'Login',
                             ontap: () async {
                               if (formkey.currentState!.validate()) {
-                               await BlocProvider.of<LoginCubit>(context)
+                                await BlocProvider.of<LoginCubit>(context)
                                     .loginuser(userModel);
-                               await BlocProvider.of<CheckCubit>(context)
-                                    .getuser(userModel);
                               }
                             }),
                         const SizedBox(height: 140),

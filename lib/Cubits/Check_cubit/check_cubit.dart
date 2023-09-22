@@ -2,12 +2,17 @@ import 'package:attendence_tracking/Models/User_model.dart';
 import 'package:attendence_tracking/constants.dart';
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:intl/intl.dart';
 import 'package:meta/meta.dart';
 
 part 'check_state.dart';
 
 class CheckCubit extends Cubit<CheckState> {
   CheckCubit() : super(CheckInitial());
+
+  List checkList = [];
+  CollectionReference usersReference =
+      FirebaseFirestore.instance.collection(kCollectionUsers);
 
   Future<void> checkIn(UserModel userModel) async {
     if (!userModel.shouldCheckIn!) {
@@ -16,7 +21,9 @@ class CheckCubit extends Cubit<CheckState> {
     }
 
     try {
-      userModel.checkList!.add(DateTime.now());
+      final DateTime dateTime = DateTime.now();
+      final formattedtime = DateFormat('dd/MM/yyyy  HH:mm').format(dateTime);
+      userModel.checkList!.add(formattedtime);
       await FirebaseFirestore.instance
           .collection(kCollectionUsers)
           .doc(userModel.docID)
@@ -38,7 +45,9 @@ class CheckCubit extends Cubit<CheckState> {
       return;
     }
     try {
-      userModel.checkList!.add(DateTime.now());
+      final DateTime dateTime = DateTime.now();
+      final formattedtime = DateFormat('dd/MM/yyyy  HH:mm').format(dateTime);
+      userModel.checkList!.add(formattedtime);
       await FirebaseFirestore.instance
           .collection(kCollectionUsers)
           .doc(userModel.docID)
@@ -52,8 +61,5 @@ class CheckCubit extends Cubit<CheckState> {
       emit(CheckinFailurePress(e.toString()));
     }
   }
+
 }
-
-/*
-
- */

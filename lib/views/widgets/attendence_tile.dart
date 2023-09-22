@@ -1,15 +1,13 @@
 import 'package:attendence_tracking/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class AttendenceTile extends StatelessWidget {
-  const AttendenceTile({super.key});
+  const AttendenceTile(
+      {super.key, required this.checkIn, required this.checkOut});
+  final dynamic checkIn, checkOut;
 
   @override
   Widget build(BuildContext context) {
-    final DateTime dateTime = DateTime.now();
-    final formattedtime = DateFormat('dd/MM/yyyy  HH:mm').format(dateTime);
-
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12),
       child: Container(
@@ -26,14 +24,14 @@ class AttendenceTile extends StatelessWidget {
         ),
         child: Column(children: [
           Text(
-            "Check in : $formattedtime",
+            "Check in : $checkIn",
             style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 20,
             ),
           ),
           Text(
-            "Check out : $formattedtime",
+            "Check out : $checkOut",
             style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 20,

@@ -62,10 +62,10 @@ class HomeView extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 20),
-                const Expanded(
+                Expanded(
                     child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24),
-                  child: AttendenceListView(),
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: AttendenceListView(userModel: userModel),
                 )),
               ],
             ),

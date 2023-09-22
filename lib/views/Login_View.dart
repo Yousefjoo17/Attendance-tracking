@@ -1,5 +1,6 @@
 import 'package:attendence_tracking/Cubits/Login_Cubit/login_cubit.dart';
 import 'package:attendence_tracking/Models/User_model.dart';
+import 'package:attendence_tracking/helpers/Show_snack_bar.dart';
 import 'package:attendence_tracking/views/Home_View.dart';
 import 'package:attendence_tracking/views/widgets/Custom_Button.dart';
 import 'package:attendence_tracking/views/widgets/Custom_Font.dart';
@@ -33,7 +34,8 @@ class _LoginViewState extends State<LoginView> {
                 context,
                 MaterialPageRoute(
                     builder: (context) => HomeView(userModel: userModel)));
-          } else {
+          } else if (state is LoginFailure) {
+            showmySnackBar(context, state.errMessage);
             isLoading = false;
           }
         },

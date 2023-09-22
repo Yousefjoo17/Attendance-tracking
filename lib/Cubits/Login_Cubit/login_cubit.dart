@@ -11,7 +11,7 @@ class LoginCubit extends Cubit<LoginState> {
 
   CollectionReference usersReference =
       FirebaseFirestore.instance.collection(kCollectionUsers);
-   bool newUser=true;
+  bool newUser = true;
 
   Future<void> loginuser(UserModel userModel) async {
     emit(LoginLoading());

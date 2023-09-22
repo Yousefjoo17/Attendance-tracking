@@ -18,9 +18,12 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  GlobalKey<FormState> formkey = GlobalKey();
+  final GlobalKey<FormState> formkey = GlobalKey();
   UserModel userModel = UserModel(shouldCheckIn: true);
   bool isLoading = false;
+  final TextEditingController controller1 = TextEditingController();
+  final TextEditingController controller2 = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,6 +33,9 @@ class _LoginViewState extends State<LoginView> {
             isLoading = true;
           } else if (state is LoginSuccess) {
             isLoading = false;
+            controller1.clear();
+            controller2.clear();
+            
             Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -71,6 +77,7 @@ class _LoginViewState extends State<LoginView> {
                             userModel.name = value;
                           },
                           icon: const Icon(Icons.person),
+                          controller: controller1,
                         ),
                         const SizedBox(height: 10),
                         CustomTextField(
@@ -80,6 +87,7 @@ class _LoginViewState extends State<LoginView> {
                             userModel.password = value;
                           },
                           icon: const Icon(Icons.key),
+                          controller: controller2,
                         ),
                         const SizedBox(height: 30),
                         CustomButton(

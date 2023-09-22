@@ -12,21 +12,26 @@ class HomeAppBar extends StatelessWidget {
       height: 90,
       color: kprimaryColor,
       padding: const EdgeInsets.only(top: 40),
-      child: const Row(
+      child: Row(
         children: [
-          Spacer(flex: 1),
-          Icon(
-            Icons.list,
-            size: 35,
-            color: Colors.white,
-          ),
-          Spacer(flex: 20),
-          Icon(
+          const Spacer(flex: 1),
+          const Icon(
             Icons.notifications,
             size: 30,
             color: Colors.white,
           ),
-          Spacer(flex: 1),
+          const Spacer(flex: 20),
+          IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.exit_to_app_sharp,
+              size: 30,
+              color: Colors.white,
+            ),
+          ),
+          const Spacer(flex: 1),
         ],
       ),
     );
